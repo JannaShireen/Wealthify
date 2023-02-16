@@ -15,7 +15,7 @@ class CashTrack extends StatelessWidget {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        primarySwatch: Colors.blue,
       ),
       home: const SplashScreen(),
 

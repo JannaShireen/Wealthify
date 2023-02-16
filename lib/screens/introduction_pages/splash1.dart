@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:cash_track/screens/introduction_pages/onboarding_screens/onboarding.dart';
 
 import 'package:cash_track/screens/home_page.dart';
+import 'package:cash_track/screens/root_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -68,6 +69,6 @@ class _SplashScreenState extends State<SplashScreen> {
     }
 
     Future <void> goHome() async{
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ((context) =>const HomeScreen()),),);
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ((context) => const RootPage()),),);
    }
 }
