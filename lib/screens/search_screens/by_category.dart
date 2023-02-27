@@ -10,12 +10,43 @@ class SearchbyCategory extends StatefulWidget {
 }
 
 class _SearchbyCategoryState extends State<SearchbyCategory> {
+  List<String> items=['Income','Expense'];
+  String? _selectedItem='Income';
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
     
-     body: SafeArea(
-      child: Center(child: Text('Search by category'))),
-    );
+     appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 69, 8, 57),
+          leading: const Icon(Icons.search),
+              title: const Text('Search by Category',style: TextStyle(color: Colors.white),),
+              centerTitle: true,
+     ),
+
+     body: Padding(
+       padding: const EdgeInsets.all(8.0),
+       child: Column(
+         children: [Center(
+           child: DropdownButton<String>(
+            items: items.map((item) => DropdownMenuItem<String>(
+              value: item,
+              child: Text(item,style: TextStyle(fontSize: 24)),
+              ))
+              .toList(),
+            value: _selectedItem,
+             onChanged: (item)=>
+             setState(() {
+               _selectedItem=item;
+             }),
+             ),
+         ),
+         ]
+       )
+       ,
+        
+       ),
+     );
+    
   }
+ 
 }

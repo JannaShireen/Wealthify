@@ -1,9 +1,27 @@
+import 'package:cash_track/db/models/category_model.dart/category_model.dart';
+import 'package:cash_track/db/models/transactions/transaction_model.dart';
 import 'package:cash_track/screens/introduction_pages/splash1.dart';
 
 import 'package:flutter/material.dart';
 
+import 'package:hive_flutter/hive_flutter.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  if(!Hive.isAdapterRegistered(CategoryTypeAdapter().typeId))
+  {
+    Hive.registerAdapter(CategoryTypeAdapter());
+  }
+  if(!Hive.isAdapterRegistered(CategoryModelAdapter().typeId))
+  {
+    Hive.registerAdapter(CategoryModelAdapter());
+  }
+   if(!Hive.isAdapterRegistered(TransactionModelAdapter().typeId))
+  {
+    Hive.registerAdapter(TransactionModelAdapter());
+  }
+  
   runApp(const CashTrack());
 }
 

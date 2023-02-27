@@ -1,7 +1,9 @@
-import 'package:cash_track/screens/home_page.dart';
+import 'package:cash_track/screens/home/screen_root.dart';
+import 'package:cash_track/screens/home/screen_transaction_home.dart';
 import 'package:cash_track/screens/introduction_pages/onboarding_screens/widgets/splash2.dart';
 import 'package:cash_track/screens/introduction_pages/onboarding_screens/widgets/splash3.dart';
 import 'package:cash_track/screens/introduction_pages/onboarding_screens/widgets/splash4.dart';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -107,39 +109,62 @@ class _OnboardingState extends State<Onboarding> {
                             pref.setBool('seen', true);
                             const HomeScreen();
                              }),
-                        child: Container(
-                                      height: 50,
-                                      width: 140,
-                                      decoration: const BoxDecoration(
+                        // child: Container(
+                        //               height: 50,
+                        //               width: 140,
+                        //               decoration: const BoxDecoration(
                                               
-                                                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                                                   color: Colors.transparent,
-                                                   image:  DecorationImage(
-                                                             image:   AssetImage(
-                                                                     "assets/images/light-violet.png",
-                                                                    ),
-                                                             fit: BoxFit.cover,
-                                                          ),
-                                                   ),
+                        //                           borderRadius: BorderRadius.all(Radius.circular(15)),
+                        //                            color: Colors.transparent,
+                        //                            image:  DecorationImage(
+                        //                                      image:   AssetImage(
+                        //                                              "assets/images/light-violet.png",
+                        //                                             ),
+                        //                                      fit: BoxFit.cover,
+                        //                                   ),
+                        //                            ),
                                 child: Center(
-                                        child: Row(
-                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                               children: [
-                                                         const Text(
-                                                            'Get Started',
-                                                            style: TextStyle(
-                                                             color: Colors.white,
-                                                            ),
-                                                            ),
-                                                          Icon(
-                                                            Icons.adaptive.arrow_forward,
-                                                             color: Colors.white,
-                                                             )
-                                                         ],
+                                        // child: Row(
+                                            
+                                                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              //  children: [
+
+                                                          child : ElevatedButton(onPressed:() => Navigator.of(context)
+                                                          .push(MaterialPageRoute(builder: (context) => const RootPage(),)),
+
+                            
+                                               
+                                                              style: ElevatedButton.styleFrom(
+                                                                      foregroundColor: Colors.white,
+                                                                     ),
+                                                            child: const Text('Get Started'),
+                                                    
+                                                    ),
+
+               
+              
+                                                // TextButton(
+                                                //           style: TextButton.styleFrom(
+                                                //           foregroundColor: Colors.blue,
+                                                //            ),
+                                                //            onPressed: () { },
+                                                //             child: const Text('Get Started!'),
+                                                //           ),
+                                                        //  const Text(
+                                                        //     'Get Started',
+                                                        //     style: TextStyle(
+                                                        //      color: Colors.white,
+                                                        //     ),
+                                                        // //     ),
+                                                        //   Icon(
+                                                        //     Icons.adaptive.arrow_forward,
+                                                        //      color: Colors.blue,
+                                                        //      )
+                                                        //  ],
                                             ),
-                                       ),
-                                )
-                       )
+                                      )
+                                // )
+                      //  )
                       : GestureDetector(
                                        onTap: (() {
                                             _pageController.nextPage(
@@ -147,22 +172,28 @@ class _OnboardingState extends State<Onboarding> {
                                               curve: Curves.easeIn);
                                               }),
                         child: Center(
-                                     child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                             children: [
-                                                    const Text(
-                                                              'Next',
-                                                                style: TextStyle(
-                                                                color: Colors.black,
-                                                                fontWeight: FontWeight.bold,
-                                                                  ),
-                                                               ),
-                                                     Icon(  
-                                                           Icons.adaptive.arrow_forward,
-                                                          color: Colors.white,
-                                                         ),
-                                                     ],
-                                             ),
+                                     child:
+                                     Container(
+                                      color: Colors.blue,
+                                      padding: const EdgeInsets.all(2),
+                                       child: Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                               children:const  [
+                                                       Text(
+                                                                'Next',
+                                                                  style: TextStyle(
+                                                                  color: Colors.white,
+                                                                  fontWeight: FontWeight.bold,
+                                                                    ),
+                                                                 ),
+                                                       Icon(  
+                                                             Icons.arrow_forward_sharp,
+                                                            color: Colors.white,
+                                                            size: 1.2,
+                                                           ),
+                                                       ],
+                                               ),
+                                     ),
                                     ),
                        )
         ],
