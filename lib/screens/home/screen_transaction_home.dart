@@ -14,6 +14,7 @@ import 'package:cash_track/screens/search_screens/by_description.dart';
 import 'package:circular_menu/circular_menu.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 
 enum SearchItems { categories, date, description }
@@ -299,59 +300,92 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: const EdgeInsets.all(5),
                         itemBuilder: (ctx, index) {
                           final _value= newList[index];
-                          return  Card(
-                            elevation: 0,
-                            child: ListTile(
-                              leading: CircleAvatar(
-                                radius: 50,
+                          return  Slidable(
+                            key: Key(_value.id!),
+                            startActionPane: ActionPane(
+                              motion: ScrollMotion(),
+                              children: [
+                                SlidableAction(
+                                  onPressed: (ctx) {
+                                    TransactionDB.instance.deleteTransaction(_value.id!);
+                                  },
+                                  icon: Icons.delete,
+                                label: 'Delete',
+                                ),
+                                 SlidableAction(
+          onPressed: ((context) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: ((context) {
+                  return EditTransaction(
+                    obj: transaction,
+                  );
+                }),
+              ),
+            );
+          }),
+          icon: Icons.edit,
+          foregroundColor: const Color(0xFF2E49FB),
+        ),
+
                                 
-                                backgroundColor: _value.type == CategoryType.income ? Colors.green : Colors.red,
-                                child: Text(
-                                  parseDate(_value.date),
-                                  textAlign: TextAlign.center,
+                              ]),
+                        
+                            child: Card(
+                              elevation: 0,
+                              child: ListTile(
+                                leading: CircleAvatar(
+                                  radius: 50,
+                                  
+                                  backgroundColor: _value.type == CategoryType.income ? Colors.green : Colors.red,
+                                  child: Text(
+                                    parseDate(_value.date),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                title: Text('RS ${_value.amount}'),
+                                subtitle: Text(_value.category.name),
+                                //  trailing: IconButton(
+                                //           onPressed: (){
+                                  
+                                //     showDialog(
+                                //           context: context,
+                                //           builder: (ctx) => AlertDialog(
+                                //             title: const Text("Confirm"),
+                                //             content: const Text("Are you sure you want to delete?"),
+                                //             actions: <Widget>[
+                                //               TextButton(
+                                //                 onPressed: () {
+                                                 
+                                                  
+                                  
+                                //                 },
+                                //                 child: Container(
+                                //                   color: Color.fromARGB(255, 232, 247, 232),
+                                //                   padding: const EdgeInsets.all(14),
+                                //                   child: const Text("Yes"),
+                                //                 ),
+                                //               ),
+                                //               TextButton(
+                                //                 onPressed: () {
+                                //                   Navigator.of(ctx).pop();
+                                //                 },
+                                //                 child: Container(
+                                //                   color: Color.fromARGB(255, 240, 209, 230),
+                                //                   padding: const EdgeInsets.all(14),
+                                //                   child: const Text("No"),
+                                //                 ),
+                                //               ),
+                                //             ],
+                                //           ),
+                                //         );
+                                //         }, 
+                                //           icon: const Icon(Icons.delete)), 
+                               
                                 ),
                               ),
-                              title: Text('RS ${_value.amount}'),
-                              subtitle: Text(_value.category.name),
-                               trailing: IconButton(
-                onPressed: (){
-        
-          showDialog(
-                context: context,
-                builder: (ctx) => AlertDialog(
-                  title: const Text("Confirm"),
-                  content: const Text("Are you sure you want to delete?"),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed: () {
-                       
-                        
-        
-                      },
-                      child: Container(
-                        color: Color.fromARGB(255, 232, 247, 232),
-                        padding: const EdgeInsets.all(14),
-                        child: const Text("Yes"),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(ctx).pop();
-                      },
-                      child: Container(
-                        color: Color.fromARGB(255, 240, 209, 230),
-                        padding: const EdgeInsets.all(14),
-                        child: const Text("No"),
-                      ),
-                    ),
-                  ],
-                ),
-              );
-              }, 
-                icon: const Icon(Icons.delete)), 
-                             
-                              ),
-                            );
+                          );
         
                         },
                           
