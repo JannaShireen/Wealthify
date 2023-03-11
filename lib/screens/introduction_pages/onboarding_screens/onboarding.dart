@@ -130,7 +130,7 @@ class _OnboardingState extends State<Onboarding> {
                                               //  children: [
 
                                                           child : ElevatedButton(onPressed:() => Navigator.of(context)
-                                                          .push(MaterialPageRoute(builder: (context) => const RootPage(),)),
+                                                          .pushReplacement(MaterialPageRoute(builder: (context) => const RootPage(),)),
 
                             
                                                

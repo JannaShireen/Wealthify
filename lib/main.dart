@@ -3,6 +3,7 @@ import 'package:cash_track/db/models/transactions/transaction_model.dart';
 import 'package:cash_track/screens/introduction_pages/splash1.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -30,12 +31,15 @@ class CashTrack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  statusBarColor: Colors.grey,
+));
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      home: const SplashScreen(), 
 
      
     );

@@ -44,8 +44,9 @@ class _CategoryPageState extends State<ScreenCategory> with SingleTickerProvider
       
       length: 2,
        child: Scaffold(
+        backgroundColor: Color.fromARGB(255, 205, 204, 204),
         appBar: AppBar(
-            backgroundColor: const Color.fromARGB(255, 69, 8, 57),
+            backgroundColor: const Color.fromARGB(255, 11, 6, 6),
               title: const Text('Categories',style: TextStyle(color: Colors.white),),
               centerTitle: true,
               bottom:  TabBar(
@@ -72,7 +73,7 @@ class _CategoryPageState extends State<ScreenCategory> with SingleTickerProvider
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton(
 
-                backgroundColor: Color.fromARGB(255, 99, 9, 81),
+                backgroundColor: Colors.black,
                 
                 onPressed: (){
                  showCategoryPopup(context);

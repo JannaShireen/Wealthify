@@ -1,8 +1,8 @@
 import 'package:cash_track/screens/category/screen_category.dart';
 import 'package:cash_track/screens/home/screen_transaction_home.dart';
 import 'package:cash_track/screens/widgets/bottom_navigation.dart';
-import 'package:cash_track/screens/widgets/insight_page.dart';
-import 'package:cash_track/screens/widgets/settings_page.dart';
+import 'package:cash_track/Insights/insight_screen.dart';
+import 'package:cash_track/settings/settings.dart';
 import 'package:flutter/material.dart';
 
 
@@ -13,7 +13,7 @@ class RootPage extends StatelessWidget {
       HomeScreen(),
       ScreenCategory(),
       InsightPage(),
-      SettingsPage(),
+      Settings(),
   ];
 
   @override

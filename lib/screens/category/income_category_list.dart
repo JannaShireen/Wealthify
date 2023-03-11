@@ -15,6 +15,7 @@ class IncomeCategoryList extends StatelessWidget {
       itemBuilder: (ctx,index){
           final category=newList[index];
             return Card(
+              color: Colors.black26,
               child: ListTile(
                title: Text(category.name),
                trailing: IconButton(

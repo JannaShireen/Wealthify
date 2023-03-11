@@ -1,4 +1,5 @@
 import 'package:cash_track/db/models/category_model.dart/category_model.dart';
+import 'package:cash_track/db/models/transactions/transaction_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -30,6 +31,8 @@ class CategoryDB {
      refreshUI();
 
   }
+
+ 
 
   static Future<List<CategoryModel>> getCategories()async{
     final categoryDB= await Hive.openBox<CategoryModel>(CATEGORY_DB_NAME);
