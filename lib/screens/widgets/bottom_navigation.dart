@@ -1,5 +1,5 @@
-import 'package:cash_track/screens/home/screen_root.dart';
-import 'package:cash_track/screens/home/screen_transaction_home.dart';
+import 'package:wealthify/screens/home/screen_root.dart';
+import 'package:wealthify/screens/home/screen_transaction_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';

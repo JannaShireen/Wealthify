@@ -1,9 +1,7 @@
-import 'package:cash_track/db/models/category_model.dart/category_model.dart';
 
-import 'package:cash_track/db/models/transactions/transaction_db.dart';
-import 'package:cash_track/db/models/transactions/transaction_model.dart';
-import 'package:cash_track/screens/widgets/list_view_all.dart';
-import 'package:cash_track/screens/widgets/transaction.list.dart';
+
+import 'package:wealthify/db/db_functions/transaction_functions.dart';
+import 'package:wealthify/transactions/transaction.list.dart';
 import 'package:flutter/material.dart';
 
 
@@ -67,7 +65,8 @@ class SearchField extends StatelessWidget {
           .where((element) =>
            element.category.name.toString()
               .toLowerCase()
-              .contains(query.trim().toLowerCase()))
+              .contains(query.trim().toLowerCase())||element.purpose.contains(query.trim().toLowerCase()))
+
           .toList() ;
           
       

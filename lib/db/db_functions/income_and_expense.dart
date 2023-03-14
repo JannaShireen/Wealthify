@@ -1,7 +1,8 @@
-import 'package:cash_track/Insights/widgets/screen_all.dart';
-import 'package:cash_track/db/models/category_model.dart/category_model.dart';
-import 'package:cash_track/db/models/transactions/transaction_db.dart';
-import 'package:cash_track/db/models/transactions/transaction_model.dart';
+import 'package:wealthify/db/models/category_model/category_model.dart/category_model.dart';
+import 'package:wealthify/db/db_functions/transaction_functions.dart';
+import 'package:wealthify/db/models/transaction_model/transaction_model.dart';
+import 'package:wealthify/insights/widgets/screen_all.dart';
+
 import 'package:flutter/material.dart';
 
 ValueNotifier expenseTotal = ValueNotifier(0.0);
@@ -12,7 +13,7 @@ void incomeAndExpense() {
   incomeTotal.value = 0;
   expenseTotal.value = 0;
   totalBalance.value = 0;
-  final List<TransactionModel> value =
+  final List value =
       TransactionDB.instance.transactionListNotifier.value;
 
   for (int i = 0; i < value.length; i++) {
@@ -23,5 +24,6 @@ void incomeAndExpense() {
     }
   }
   totalBalance.value = incomeTotal.value - expenseTotal.value;
-  overViewGraphNotifier.notifyListeners();
+
+  //overViewGraphNotifier.notifyListeners();
 }

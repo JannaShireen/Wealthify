@@ -1,4 +1,4 @@
-import 'package:cash_track/screens/widgets/list_view_all.dart';
+import 'package:wealthify/transactions/list_view_all.dart';
 import 'package:flutter/material.dart';
 
 class TypeFilterClass extends StatelessWidget {
@@ -30,7 +30,7 @@ class TypeFilterClass extends StatelessWidget {
               ),
             ]),
         child: const Icon(
-          Icons.filter_list_rounded,
+          Icons.filter_list_sharp,
           size: 30,
           // shadows: <Shadow>[Shadow(color: Colors.white, blurRadius: 15.0)],
         ));

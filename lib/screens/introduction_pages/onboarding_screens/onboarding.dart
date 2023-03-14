@@ -1,8 +1,8 @@
-import 'package:cash_track/screens/home/screen_root.dart';
-import 'package:cash_track/screens/home/screen_transaction_home.dart';
-import 'package:cash_track/screens/introduction_pages/onboarding_screens/widgets/splash2.dart';
-import 'package:cash_track/screens/introduction_pages/onboarding_screens/widgets/splash3.dart';
-import 'package:cash_track/screens/introduction_pages/onboarding_screens/widgets/splash4.dart';
+import 'package:wealthify/screens/home/screen_root.dart';
+import 'package:wealthify/screens/home/screen_transaction_home.dart';
+import 'package:wealthify/screens/introduction_pages/onboarding_screens/widgets/splash2.dart';
+import 'package:wealthify/screens/introduction_pages/onboarding_screens/widgets/splash3.dart';
+import 'package:wealthify/screens/introduction_pages/onboarding_screens/widgets/splash4.dart';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -105,9 +105,10 @@ class _OnboardingState extends State<Onboarding> {
                     isLastPage
                       ? GestureDetector(
                              onTap: (() async {
-                             final pref = await SharedPreferences.getInstance();
-                            pref.setBool('seen', true);
+                            //  final pref = await SharedPreferences.getInstance();
+                            // pref.setBool('seen', true);
                             const HomeScreen();
+                            //pref.setBool('seen', false);
                              }),
                         // child: Container(
                         //               height: 50,

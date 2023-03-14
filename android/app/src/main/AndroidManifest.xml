@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cash_track">
+    package="com.example.wealthify">
    <application
-        android:label="cash_track"
+        android:label="Wealthify"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

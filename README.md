@@ -1,4 +1,4 @@
-# cash_track
+# wealthify
 
 A new Flutter project.
 

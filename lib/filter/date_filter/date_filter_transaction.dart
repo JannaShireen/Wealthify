@@ -1,14 +1,23 @@
-import 'package:cash_track/db/models/transactions/transaction_db.dart';
+
+
+import 'package:wealthify/db/db_functions/transaction_functions.dart';
+import 'package:custom_date_range_picker/custom_date_range_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:cash_track/screens/widgets/list_view_all.dart';
+import 'package:wealthify/transactions/list_view_all.dart';
 
-import '../../../../../screens/widgets/transaction.list.dart';
+import '../../transactions/transaction.list.dart';
 
-class DAteFilterTransaction extends StatelessWidget {
+class DAteFilterTransaction extends StatefulWidget {
   const DAteFilterTransaction({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<DAteFilterTransaction> createState() => _DAteFilterTransactionState();
+}
+
+class _DAteFilterTransactionState extends State<DAteFilterTransaction> {
+  DateTime? startDate,endDate;
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<int>(
@@ -18,7 +27,7 @@ class DAteFilterTransaction extends StatelessWidget {
         ),
       ),
       child: const Icon(
-        Icons.calendar_today_rounded,
+        Icons.calendar_view_day_rounded,
         // size: 0,
         // shadows: <Shadow>[Shadow(color: Colors.white, blurRadius: 15.0)],
       ),
@@ -78,6 +87,45 @@ class DAteFilterTransaction extends StatelessWidget {
                       element.date.year == DateTime.now().year)
                   .toList();
             }),
+            PopupMenuItem(
+            value: 2,
+            child: const Text(
+              "Date Range",
+            ),
+            onTap: () {
+               showCustomDateRangePicker(
+                    context,
+                    dismissible: true,
+                    minimumDate: DateTime(2010),
+                    maximumDate: DateTime.now(),
+                    endDate: endDate,
+                    startDate: startDate,
+                    onApplyClick: (start, end) {
+                      setState(() {
+                        endDate = end;
+                        startDate = start;
+                      });
+                    },
+                    onCancelClick: () {
+                      setState(() {
+                        endDate = null;
+                        startDate = null;
+                      });
+                    },
+                  );
+                  //print('start date $startDate , end date $endDate');
+
+                  overViewListNotifier.value =
+                  TransactionDB.instance.transactionListNotifier.value;
+              overViewListNotifier.value = overViewListNotifier.value
+                  .where((element) =>
+                      element.date.isAfter(startDate!) && element.date.isBefore(endDate!))
+                  .toList();
+                  startDate=null;
+                  endDate=null;
+
+            }),
+            
       ],
     );
   }

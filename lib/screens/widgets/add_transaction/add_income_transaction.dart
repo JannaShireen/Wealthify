@@ -1,8 +1,10 @@
-import 'package:cash_track/db/db_category_functions.dart';
-import 'package:cash_track/db/models/category_model.dart/category_model.dart';
-import 'package:cash_track/db/models/transactions/transaction_db.dart';
-import 'package:cash_track/db/models/transactions/transaction_model.dart';
+import 'package:wealthify/db/db_functions/db_category_functions.dart';
+import 'package:wealthify/db/db_functions/transaction_functions.dart';
+import 'package:wealthify/db/models/category_model/category_model.dart/category_model.dart';
+import 'package:wealthify/db/models/transaction_model/transaction_model.dart';
+
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 
 
@@ -126,7 +128,7 @@ final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
                 
                   }, 
                   icon: const Icon(Icons.calendar_today), 
-                  label: Text(_selectedDate==null ?'Select Date' : _selectedDate.toString()),
+                  label: Text(_selectedDate==null ?'Select Date' : DateFormat("dd/MMMM/yyyy").format(_selectedDate!)),
                 ),
                 
                 

@@ -1,8 +1,8 @@
-import 'package:cash_track/screens/category/screen_category.dart';
-import 'package:cash_track/screens/home/screen_transaction_home.dart';
-import 'package:cash_track/screens/widgets/bottom_navigation.dart';
-import 'package:cash_track/Insights/insight_screen.dart';
-import 'package:cash_track/settings/settings.dart';
+import 'package:wealthify/screens/category/screen_category.dart';
+import 'package:wealthify/screens/home/screen_transaction_home.dart';
+import 'package:wealthify/screens/widgets/bottom_navigation.dart';
+import 'package:wealthify/insights/insight_screen.dart';
+import 'package:wealthify/settings/settings.dart';
 import 'package:flutter/material.dart';
 
 

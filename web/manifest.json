@@ -1,6 +1,6 @@
 {
-    "name": "cash_track",
-    "short_name": "cash_track",
+    "name": "wealthify",
+    "short_name": "wealthify",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

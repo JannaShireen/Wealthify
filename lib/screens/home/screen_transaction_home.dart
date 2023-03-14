@@ -1,19 +1,17 @@
-import 'package:cash_track/Insights/widgets/screen_all.dart';
-import 'package:cash_track/db/db_category_functions.dart';
-import 'package:cash_track/db/models/category_model.dart/category_model.dart';
-import 'package:cash_track/db/models/transactions/income_and_expense.dart';
-import 'package:cash_track/db/models/transactions/transaction_db.dart';
-import 'package:cash_track/db/models/transactions/transaction_model.dart';
-import 'package:cash_track/screens/category/screen_category.dart';
-import 'package:cash_track/screens/search_screens/search_screen.dart';
-import 'package:cash_track/screens/widgets/add_transaction/add_expense_transaction.dart';
-import 'package:cash_track/screens/widgets/add_transaction/add_income_transaction.dart';
+import 'dart:ffi';
 
-import 'package:cash_track/screens/widgets/list_view_all.dart';
+import 'package:wealthify/db/db_functions/income_and_expense.dart';
+import 'package:wealthify/db/db_functions/transaction_functions.dart';
+import 'package:wealthify/db/models/category_model/category_model.dart/category_model.dart';
+import 'package:wealthify/db/models/transaction_model/transaction_model.dart';
+import 'package:wealthify/insights/widgets/screen_all.dart';
+import 'package:wealthify/db/db_functions/db_category_functions.dart';
+import 'package:wealthify/screens/category/screen_category.dart';
+import 'package:wealthify/screens/widgets/add_transaction/add_expense_transaction.dart';
+import 'package:wealthify/screens/widgets/add_transaction/add_income_transaction.dart';
+import 'package:wealthify/transactions/list_view_all.dart';
 import 'package:circular_menu/circular_menu.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:intl/intl.dart';
 
 enum SearchItems { categories, date, description }
@@ -34,16 +32,22 @@ class _HomeScreenState extends State<HomeScreen> {
       incomeAndExpense();
       overViewGraphNotifier.value =
           TransactionDB.instance.transactionListNotifier.value;
+          //incomeTotal.notifyListeners(); 
+  //          expenseTotal.notifyListeners();
+  // incomeTotal.notifyListeners();
+  // totalBalance.notifyListeners();
+
     });
   }
-  
-  
-
+ double? expenseTotal;
+ double? incomeTotal;
+double? totalBalance;
   
   @override
   Widget build(BuildContext context) {
     TransactionDB.instance.refresh();
     CategoryDB.instance.refreshUI();
+   
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 205, 204, 204),
       //floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -54,21 +58,10 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Color.fromARGB(255, 11, 6, 6),
         automaticallyImplyLeading: false,
         centerTitle: true,
-        // actions: <Widget>[
-        //   IconButton(
-        //     onPressed: (){
-        //      showSearch(context: context, delegate: SearchWidget(),
-        //      );
-        //     }, 
-        //     icon: const Icon(Icons.search)
-        //     )
-
-
-        // ],
-          // 
+       
         
         title: const Text(
-          'CashTrack',
+          'Wealthify',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -83,7 +76,23 @@ class _HomeScreenState extends State<HomeScreen> {
             width: double.infinity,
             height: 280,
             child:
-         Stack(
+        ValueListenableBuilder(valueListenable:   TransactionDB.instance.transactionListNotifier,
+         builder: (context,List<TransactionModel> value, _) {
+          incomeTotal=0;
+          expenseTotal=0;
+          totalBalance=0;
+          TransactionDB.instance.transactionListNotifier.value.forEach((element) 
+          {if(element.type==CategoryType.income)
+          {incomeTotal=incomeTotal!+element.amount;
+          }
+          else{
+             {expenseTotal=expenseTotal!+element.amount;
+          }
+          }});
+          totalBalance=incomeTotal!-expenseTotal!;
+
+
+          return  Stack(
               children: [
                 Container(
                   
@@ -128,18 +137,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
 
                   
-                              ValueListenableBuilder(
-                    valueListenable: totalBalance,
-                    builder: (BuildContext context, dynamic value,
-                                      Widget? child){
-                    
-                      return Column(
+             Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         
                       
                          Text(
-                           totalBalance.value < 0 ? 'Lose' : 'Total',
+                           totalBalance! < 0 ? 'Lose' : 'Total',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 12,
@@ -150,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           height: 15,
                         ),
                          Text(
-                        '₹${totalBalance.value.abs().toString()}' ,
+                        '₹${totalBalance!.abs().toString()}' ,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 25,
@@ -161,9 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         //   height: 10,
                         // ),
                       ],
-                    );
-                                      }
-                  ),
+                    ),
                 
 
                       Row(
@@ -189,11 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 60,
                               width: 30,
                               // color: Colors.green,
-                              child: ValueListenableBuilder(
-                                valueListenable: incomeTotal,
-                                builder: (BuildContext context, dynamic value,
-                                          Widget? child){
-                                              return Column(
+                              child: Column(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children:  [
                                   const Text(
@@ -205,16 +203,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
                                   Text(
-                                    '${incomeTotal.value}',
+                                    '${incomeTotal!}',
                                     style: TextStyle(
                                         fontSize: 15,
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                ],);
-                                          },
-                              
-                              ),
+                                ],),
                             ),
                           ),
                           Expanded(
@@ -234,11 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 60,
                               width: 30,
                               // color: Colors.red,
-                              child: ValueListenableBuilder(
-                                valueListenable: expenseTotal,
-                                builder: (BuildContext context, dynamic value,
-                                          Widget? child){
-                                 return Column(
+                              child: Column(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children:  [
                                     const Text(
@@ -249,18 +240,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                      '₹${expenseTotal.value.toString()}',
-                                      style: TextStyle(
+                                      '₹${expenseTotal!.toString()}',
+                                      style: const TextStyle(
                                         fontSize: 15,
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   ],
-                                );
-                                          }
-
-                              ),
+                                )
                             ),
                           ),
                         ],
@@ -272,7 +260,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ],
-         ),
+         );
+          
+        },),
              ),
 
 
@@ -300,7 +290,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   );
                                 },
                                 child: const Text('See All',
-                                style: TextStyle(color: Colors.black),)),
+                                style: TextStyle(color: Colors.blue),)),
                           ],
                         ),
                       ),

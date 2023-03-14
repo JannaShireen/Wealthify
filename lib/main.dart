@@ -1,10 +1,8 @@
-import 'package:cash_track/db/models/category_model.dart/category_model.dart';
-import 'package:cash_track/db/models/transactions/transaction_model.dart';
-import 'package:cash_track/screens/introduction_pages/splash1.dart';
-
+import 'package:wealthify/db/models/category_model/category_model.dart/category_model.dart';
+import 'package:wealthify/db/models/transaction_model/transaction_model.dart';
+import 'package:wealthify/screens/introduction_pages/splash1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:hive_flutter/hive_flutter.dart';
 
 Future<void> main() async {
@@ -23,11 +21,11 @@ Future<void> main() async {
     Hive.registerAdapter(TransactionModelAdapter());
   }
   
-  runApp(const CashTrack());
+  runApp(const Wealthify());
 }
 
-class CashTrack extends StatelessWidget {
-  const CashTrack({super.key});
+class Wealthify extends StatelessWidget {
+  const Wealthify({super.key});
 
   @override
   Widget build(BuildContext context) {

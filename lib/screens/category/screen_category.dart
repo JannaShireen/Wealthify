@@ -1,7 +1,7 @@
-import 'package:cash_track/db/db_category_functions.dart';
-import 'package:cash_track/screens/category/category_add_popup.dart';
-import 'package:cash_track/screens/category/expense_category_list.dart';
-import 'package:cash_track/screens/category/income_category_list.dart';
+import 'package:wealthify/db/db_functions/db_category_functions.dart';
+import 'package:wealthify/screens/category/category_add_popup.dart';
+import 'package:wealthify/screens/category/expense_category_list.dart';
+import 'package:wealthify/screens/category/income_category_list.dart';
 import 'package:flutter/material.dart';
 class Data {
   String label;

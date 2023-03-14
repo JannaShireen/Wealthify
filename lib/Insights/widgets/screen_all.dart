@@ -1,6 +1,7 @@
-import 'package:cash_track/db/models/transactions/income_and_expense.dart';
-import 'package:cash_track/db/models/transactions/transaction_db.dart';
-import 'package:cash_track/db/models/transactions/transaction_model.dart';
+
+import 'package:wealthify/db/db_functions/income_and_expense.dart';
+import 'package:wealthify/db/db_functions/transaction_functions.dart';
+import 'package:wealthify/db/models/transaction_model/transaction_model.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 

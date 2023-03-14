@@ -1,4 +1,4 @@
-package com.example.cash_track
+package com.example.wealthify
 
 import io.flutter.embedding.android.FlutterActivity
 

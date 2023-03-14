@@ -1,4 +1,5 @@
-import 'package:cash_track/db/models/category_model.dart/category_model.dart';
+
+import 'package:wealthify/db/models/category_model/category_model.dart/category_model.dart';
 import 'package:hive/hive.dart';
 part 'transaction_model.g.dart';
 

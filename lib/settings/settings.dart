@@ -1,10 +1,9 @@
-import 'package:cash_track/db/models/category_model.dart/category_model.dart';
-import 'package:cash_track/db/models/transactions/transaction_model.dart';
-import 'package:cash_track/screens/introduction_pages/splash1.dart';
-import 'package:cash_track/settings/widgets/about_page.dart';
+
+import 'package:wealthify/screens/home/screen_transaction_home.dart';
+
+import 'package:wealthify/settings/widgets/about_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -33,18 +32,7 @@ class Settings extends StatelessWidget {
             
             
              [
-              // ListTile(
-              //   leading: Icon(Icons.monetization_on),
-              //   title: Text('Currency'),
-              //   trailing: Icon(Icons.arrow_forward_ios),
-                
-        
-              // ),
-              // ListTile(
-              //   leading: Icon(Icons.language),
-              //   title: Text('Language'),
-              //   trailing: Icon(Icons.arrow_forward_ios),
-              //   ),
+              
         
               ListTile(
                 leading: Icon(Icons.restore),
@@ -95,7 +83,7 @@ class Settings extends StatelessWidget {
                               // ignore: use_build_context_synchronously
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
-                                  builder: (context) => const SplashScreen(),
+                                  builder: (context) => const HomeScreen(),
                                 ),
                               );
                             },

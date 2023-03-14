@@ -1,7 +1,7 @@
-import 'package:cash_track/Insights/widgets/screen_all.dart';
-import 'package:cash_track/db/models/category_model.dart/category_model.dart';
-import 'package:cash_track/db/models/transactions/transaction_db.dart';
-import 'package:cash_track/db/models/transactions/transaction_model.dart';
+import 'package:wealthify/db/models/category_model/category_model.dart/category_model.dart';
+import 'package:wealthify/db/models/transaction_model/transaction_model.dart';
+import 'package:wealthify/insights/widgets/screen_all.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:syncfusion_flutter_charts/charts.dart';

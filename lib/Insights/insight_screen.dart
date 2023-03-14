@@ -1,7 +1,8 @@
-import 'package:cash_track/Insights/widgets/screen_all.dart';
-import 'package:cash_track/Insights/widgets/screen_expense_chart.dart';
-import 'package:cash_track/Insights/widgets/screen_income_chart.dart';
-import 'package:cash_track/db/models/transactions/transaction_db.dart';
+import 'package:wealthify/db/db_functions/transaction_functions.dart';
+import 'package:wealthify/insights/widgets/screen_all.dart';
+import 'package:wealthify/insights/widgets/screen_expense_chart.dart';
+import 'package:wealthify/insights/widgets/screen_income_chart.dart';
+
 import 'package:flutter/material.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 class InsightPage extends StatefulWidget {

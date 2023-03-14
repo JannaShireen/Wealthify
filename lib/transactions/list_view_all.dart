@@ -1,21 +1,9 @@
-import 'package:cash_track/db/models/category_model.dart/category_model.dart';
-import 'package:cash_track/db/models/transactions/filter/date_filter/date_filter_transaction.dart';
-import 'package:cash_track/db/models/transactions/filter/type_filter/type_filter_transaction.dart';
-import 'package:cash_track/db/models/transactions/transaction_db.dart';
 
-
-import 'package:cash_track/db/models/transactions/transaction_model.dart';
-import 'package:cash_track/screens/home/screen_transaction_home.dart';
-import 'package:cash_track/screens/search_screens/search_field.dart';
-import 'package:cash_track/screens/widgets/edit_transaction.dart/edit_expense_transaction.dart';
-import 'package:cash_track/screens/widgets/edit_transaction.dart/edit_income_transaction.dart';
-import 'package:cash_track/screens/widgets/view_detailed_transaction.dart';
+import 'package:wealthify/db/db_functions/transaction_functions.dart';
+import 'package:wealthify/filter/date_filter/date_filter_transaction.dart';
+import 'package:wealthify/filter/type_filter/type_filter_transaction.dart';
+import 'package:wealthify/screens/search/search_field.dart';
 import 'package:flutter/material.dart';
-import 'package:cash_track/screens/category/screen_category.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:intl/intl.dart';
-
-import '../../db/models/transactions/transaction_db.dart';
 import 'transaction.list.dart';
 
 ValueNotifier showCategory = ValueNotifier('All');
@@ -65,6 +53,7 @@ class _ListViewAllTransactionsState extends State<ListViewAllTransactions> {
       ),
       body: Column(
         children: [
+
           SearchField(),
           const Expanded(
             child: TransactionList(),

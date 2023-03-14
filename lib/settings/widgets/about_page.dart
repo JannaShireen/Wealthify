@@ -36,7 +36,7 @@ class AboutPage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 20),
                 child: Text(
-                  'Cash Track',
+                  'Wealthify',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 20,

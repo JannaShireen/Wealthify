@@ -2,10 +2,10 @@
 
 import 'dart:async';
 
-import 'package:cash_track/screens/home/screen_root.dart';
-import 'package:cash_track/screens/introduction_pages/onboarding_screens/onboarding.dart';
+import 'package:wealthify/screens/home/screen_root.dart';
+import 'package:wealthify/screens/introduction_pages/onboarding_screens/onboarding.dart';
 
-import 'package:cash_track/screens/home/screen_transaction_home.dart';
+import 'package:wealthify/screens/home/screen_transaction_home.dart';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
         // widthFactor: 0.8,
        
             child:  Text(
-            'CashTrack',
+            'Wealthify',
             textScaleFactor: 3,
             style: TextStyle(
               color: Colors.white,
@@ -61,6 +61,9 @@ class _SplashScreenState extends State<SplashScreen> {
      SharedPreferences preferences= await SharedPreferences.getInstance();
      bool seen= preferences.getBool('seen') ?? false;
      seen ? goHome() : goToOnboardPage();
+     
+     preferences.setBool('seen', true);
+
 
   
   }

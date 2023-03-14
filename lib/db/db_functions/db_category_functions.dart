@@ -1,7 +1,8 @@
-import 'package:cash_track/db/models/category_model.dart/category_model.dart';
-import 'package:cash_track/db/models/transactions/transaction_model.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import '../models/category_model/category_model.dart/category_model.dart';
 
 const CATEGORY_DB_NAME= 'category-database';
 // abstract class CategorydbFunctions

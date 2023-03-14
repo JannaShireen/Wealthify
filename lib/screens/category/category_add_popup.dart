@@ -1,7 +1,9 @@
-import 'package:cash_track/db/db_category_functions.dart';
-import 'package:cash_track/db/models/category_model.dart/category_model.dart';
+import 'package:wealthify/db/db_functions/db_category_functions.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import '../../db/models/category_model/category_model.dart/category_model.dart';
 
 ValueNotifier<CategoryType> selectedCategoryNotifier = ValueNotifier(CategoryType.income);
 

@@ -1,8 +1,8 @@
-import 'package:cash_track/db/models/category_model.dart/category_model.dart';
-import 'package:cash_track/db/models/transactions/transaction_model.dart';
-import 'package:cash_track/screens/widgets/list_view_all.dart';
+
+import 'package:wealthify/db/models/transaction_model/transaction_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:wealthify/transactions/transaction.list.dart';
 
 const TRANSACTION_DB_NAME= 'transaction-db';
 
@@ -67,6 +67,7 @@ Future<void> refresh() async{
         await Hive.openBox<TransactionModel>(TRANSACTION_DB_NAME);
 
     await transactionDb.delete(obj.id);
+    overViewListNotifier.notifyListeners();
     refresh();
 
   }
