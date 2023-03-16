@@ -31,7 +31,8 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-
+android/app/upload-keystore.jks
+android/keystore.properties
 # Symbolication related
 app.*.symbols
 

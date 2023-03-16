@@ -21,11 +21,11 @@ Future<void> main() async {
     Hive.registerAdapter(TransactionModelAdapter());
   }
   
-  runApp(const Wealthify());
+  runApp(const CashTrack());
 }
 
-class Wealthify extends StatelessWidget {
-  const Wealthify({super.key});
+class CashTrack extends StatelessWidget {
+  const CashTrack({super.key});
 
   @override
   Widget build(BuildContext context) {

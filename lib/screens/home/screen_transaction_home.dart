@@ -55,7 +55,7 @@ double? totalBalance;
      
       
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 11, 6, 6),
+        backgroundColor: const Color.fromARGB(255, 11, 6, 6),
         automaticallyImplyLeading: false,
         centerTitle: true,
        
@@ -145,7 +145,7 @@ double? totalBalance;
                          Text(
                            totalBalance! < 0 ? 'Lose' : 'Total',
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 12,
                               color: Color.fromARGB(255, 74, 73, 73),
                               fontWeight: FontWeight.w600),
@@ -156,7 +156,7 @@ double? totalBalance;
                          Text(
                         '₹${totalBalance!.abs().toString()}' ,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,
                               color: Colors.black),
@@ -203,8 +203,8 @@ double? totalBalance;
                                     ),
                                   ),
                                   Text(
-                                    '${incomeTotal!}',
-                                    style: TextStyle(
+                                    '₹${incomeTotal!}',
+                                    style: const TextStyle(
                                         fontSize: 15,
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold),
@@ -268,10 +268,10 @@ double? totalBalance;
 
 
                         
-                SizedBox(height: 15,),
-                      Divider(height: 2, thickness: 3,),
+               const  SizedBox(height: 15,),
+                     const Divider(height: 2, thickness: 3,),
                       Padding(
-                        padding: EdgeInsets.all(13),
+                        padding:const EdgeInsets.all(13),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -380,7 +380,8 @@ double? totalBalance;
            toggleButtonColor: Colors.black,
           items: [
         CircularMenuItem(
-          color: Colors.black,
+          color: Colors.green,
+          
             icon: Icons.arrow_upward_rounded,
             onTap: () {
               Navigator.push(
@@ -390,7 +391,7 @@ double? totalBalance;
               // callback
             }),
         CircularMenuItem(
-          color: Colors.black,
+          color: Colors.red,
             icon: Icons.arrow_downward_rounded,
             onTap: () {
               Navigator.push(
@@ -401,7 +402,7 @@ double? totalBalance;
               //callback
             }),
         CircularMenuItem(
-          color: Colors.black,
+          color: Colors.blue,
             icon: Icons.category_rounded,
             onTap: () {
               Navigator.push(
